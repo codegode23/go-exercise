@@ -14,7 +14,7 @@ import "fmt"
 
 func main() {
 
-	var n int //here n is the size of the created map
+	var n int //here n is the size of the map to be created
 
 	var numbers = make(map[int]int, n)
 
