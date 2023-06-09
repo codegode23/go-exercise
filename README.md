@@ -18,3 +18,24 @@ The results should be printed in a comma-separated sequence on a single line.
  Suppose the following input is supplied to the program: 8
 
  Then, the output should be: 40320
+
+
+
+ ### EX3
+
+
+With a given integral number n, write a program to generate a map that contains (i, i*i) such that is an integral number between 1 and n (both included), and then the program should print the map with representation of the value
+
+Suppose the following input is supplied to the program: 8
+
+Then, the output should be: map[1:1 2:4 3:9 4:16 5:25 6:36 7:49 8:64]
+
+
+### EX4
+
+
+Write a program which accepts a sequence of comma-separated numbers from console and generate an slice out of them. Return the slice.
+
+Suppose the following input is supplied to the program: 34, 67, 55, 33, 12, 98.
+
+Then, the output should be: [34 67 55 33 12 98]
