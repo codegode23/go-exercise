@@ -7,12 +7,24 @@
 
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strconv"
+	"strings"
+)
 
 func main() {
-	// String as a range in the for loop
-	for index, s := range "GeeksForGeeKs" {
+	nums := "34, 67, 55, 33, 12, 98" //Declare the numbers
 
-		fmt.Printf("The index number of %c is %d\n", s, index)
+	numbers := strings.Split(nums, ",")
+
+	length_of_numbers := len(numbers)
+	var num = make([]int, length_of_numbers)
+
+	for i, r := range numbers {
+		str := strings.Trim(r, " ")
+		num[i], _ = strconv.Atoi(str)
 	}
+
+	fmt.Println(num)
 }
