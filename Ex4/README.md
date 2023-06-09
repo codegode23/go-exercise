@@ -7,6 +7,11 @@ Suppose the following input is supplied to the program: 34, 67, 55, 33, 12, 98.
 
 Then, the output should be: [34 67 55 33 12 98]
 
+### A slice is a reference to a portion of an array. It’s a data structure that describes a portion of an array by specifying the starting index and the length of the portion. 
+
+
+
+
 ## String is a data type in Go language and represents a slice of bytes that are UTF-8 encoded. This means that strings in Go language can represent a vast variety of characters. Strings are enclosed within double-quotes "". These strings are read-only and their values cannot be changed once defined.
 
 ### Split: This function splits a string into all substrings separated by the given separator and returns a slice that contains these substrings.
