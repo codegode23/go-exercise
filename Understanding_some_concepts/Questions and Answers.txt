@@ -34,3 +34,23 @@ func main() {
         fmt.Println("num not in range")
     }
 }
+
+STRINGS
+
+golang strings can be seen as a collection of characters. 
+A string can be of length 1 (one character), but its usually longer. 
+A string is always written in double qoutes.
+
+To join strings, you can use the package strings which has the method .Join().
+
+package main
+
+import (
+	"fmt"
+	"strings"
+)
+
+func main() {
+	s := strings.Join([]string{"hello", "world"}, ": ")
+	fmt.Println(s)
+}
