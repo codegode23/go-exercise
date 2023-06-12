@@ -340,3 +340,87 @@ In the example below, we’re setting the seed to the current Unix timestamp in 
 This ensures that the seed value is different every time the program runs.
 
 rand.Seed(time.Now().UnixNano())
+
+// To generate a unique ID, you can use a combination of random integers and
+// the strconv package to convert the integers to strings:
+
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"strconv"
+	"time"
+)
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+
+	// generate a random 8-digit ID
+	id := ""
+	for i := 0; i < 8; i++ {
+		id += strconv.Itoa(rand.Intn(10))
+	}
+
+	fmt.Println(id)
+}
+
+
+//generating a random number between 0 and 10
+
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func random(min int, max int) int {
+	return rand.Intn(max-min) + min
+}
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+	randomNum := random(0, 10)
+	fmt.Printf("Random number: %d\n", randomNum)
+}
+
+
+
+//generating random floats between 0.0 and 1.0
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+func main() {
+	rand.Seed(time.Now().UnixNano())
+
+	// generate random float between 0.0 and 1.0
+	randFloat := rand.Float64()
+
+	fmt.Println("Random float between 0.0 and 1.0:", randFloat)
+}
+
+
+POINTERS
+
+A pointer is a variable whose address is the direct memory address of another variable.
+
+The asterisk * is used to declare a pointer. The form is:
+
+
+var var_name *var-type
+
+You have to write the variable type,
+
+
+/* pointer to an integer */
+var ipointer *int        
+
+/* pointer to a float */
+var fpointer *float32    

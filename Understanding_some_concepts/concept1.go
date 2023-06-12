@@ -1,23 +1,33 @@
-// To generate a unique ID, you can use a combination of random integers and
-// the strconv package to convert the integers to strings:
+// Make a program that rolls a dice (1 to 6)
 
 package main
 
 import (
 	"fmt"
 	"math/rand"
-	"strconv"
 	"time"
 )
 
-func main() {
+// func random(min int, max int) int {
+// 	return rand.Intn(max-min) + min
+// }
+
+// func main() {
+
+// 	rand.Seed(time.Now().UnixNano())
+// 	diceRoll := random(1, 6)
+// 	fmt.Printf("Dice roll result: %d\n", diceRoll)
+// }
+
+// Can you generate negative numbers?
+func RandInt(lower, upper int) int {
 	rand.Seed(time.Now().UnixNano())
+	rng := upper - lower
+	return rand.Intn(rng) + lower
+}
 
-	// generate a random 8-digit ID
-	id := ""
-	for i := 0; i < 8; i++ {
-		id += strconv.Itoa(rand.Intn(10))
-	}
+func main() {
+	randNeg := RandInt(-2, 10)
 
-	fmt.Println(id)
+	fmt.Println(randNeg)
 }
