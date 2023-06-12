@@ -2,37 +2,63 @@
 1. Make a program that lets the user input a name
 2. Get a number from the console and check if it’s between 1 and 10.
 
-Answer
+//Create a struct house with variables noRooms, price and city
+//The golang example creates a new struct. Then it sets the variables.
+
 package main
 
 import (
-    "bufio"
-    "fmt"
-    "os"
-    "strconv"
-    "strings"
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
 )
 
+type Person struct {
+	name string
+	job  string
+}
+
+type House struct {
+	noRooms bool
+	price   int
+	city    string
+}
+
 func main() {
-    reader := bufio.NewReader(os.Stdin)
+	var aperson Person
 
-    fmt.Print("Enter a number: ")
-    str1, _ := reader.ReadString('\n')
+	aperson.name = "Albert"
+	aperson.job = "Professor"
 
-    // remove newline
-    str1 = strings.Replace(str1,"\n","",-1)
+	fmt.Printf("aperson.name =  %s\n", aperson.name)
+	fmt.Printf("aperson.job  =  %s\n\n", aperson.job)
 
-    // convert string variable to int variable
-    num, e := strconv.Atoi(str1)
-    if e != nil {
-    fmt.Println("conversion error:", str1)
-    }
+	var inDaHouse House
 
-    if num >= 1 && num <= 10 {
-    fmt.Println("correct")
-    } else {
-        fmt.Println("num not in range")
-    }
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("Enter a price for the house: \n")
+
+	pri, _ := reader.ReadString('\n')
+
+	// remove newline
+	pri = strings.Replace(pri, "\n", "", -1)
+
+	// convert string variable to int variable
+	price, e := strconv.Atoi(pri)
+	if e != nil {
+		fmt.Println("conversion error:", pri)
+	}
+
+	inDaHouse.noRooms = true
+	inDaHouse.price = price
+	inDaHouse.city = "Accra"
+
+	fmt.Printf("Information on the house\n")
+	fmt.Printf("Are there available rooms in the house? %v \n", inDaHouse.noRooms)
+	fmt.Printf("The price is Ghc%d\n", inDaHouse.price)
+	fmt.Printf("The house is located in %v \n", inDaHouse.city)
 }
 
 STRINGS
@@ -232,3 +258,66 @@ That is not the case with a struct.
 
 If you want to combine variables, structs are the way to go. Unlike the concept of object
 oriented programming, they are just data holders.
+
+
+//Create a struct house with variables noRooms, price and city
+//The golang example creates a new struct. Then it sets the variables.
+
+package main
+
+import "fmt"
+
+type Person struct {
+	name string
+	job  string
+}
+
+type House struct {
+	noRooms bool
+	price   int
+	city    string
+}
+
+func main() {
+	var aperson Person
+
+	aperson.name = "Albert"
+	aperson.job = "Professor"
+
+	fmt.Printf("aperson.name =  %s\n", aperson.name)
+	fmt.Printf("aperson.job  =  %s\n\n", aperson.job)
+
+	var inDaHouse House
+
+	inDaHouse.noRooms = true
+	inDaHouse.price = 23
+	inDaHouse.city = "Accra"
+
+	fmt.Printf("Information on the house\n")
+	fmt.Printf("Are there available rooms in the house? %v \n", inDaHouse.noRooms)
+	fmt.Printf("The price is Ghc%d\n", inDaHouse.price)
+	fmt.Printf("The house is located in %v \n", inDaHouse.city)
+}
+
+
+MAPS
+
+A Golang map is a unordered collection of key-value pairs. For every key, 
+there is a unique value. If you have a key, you can lookup the value in a map.
+
+Sometimes its called an associative array or hash table. An example of a map in Go:
+
+
+elements := make(map[string]string)
+
+Its defines as a string to string mapping. In this example we’ll use the periodic elements.
+
+You can map on other variable types too. Below an example of string to int mapping:
+
+
+alpha := make(map[string]int)
+alpha["A"] = 1
+
+You can use a map to store information. We change the map, into a map of strings to maps of strings to strings.
+
+example
