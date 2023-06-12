@@ -318,6 +318,25 @@ You can map on other variable types too. Below an example of string to int mappi
 alpha := make(map[string]int)
 alpha["A"] = 1
 
-You can use a map to store information. We change the map, into a map of strings to maps of strings to strings.
+alpha := map[string]int{
+    "A" : 1,
+    "B" : 2,
+    "C" : 3,
+}
 
-example
+RANDOM NUMBERS
+
+In Golang, the math/rand package provides functions for generating random numbers. 
+Here’s a quick guide on how to use this package to generate random numbers.
+
+Before generating random numbers, you need to set the seed value. 
+The seed value is used as the starting point for generating random numbers. 
+If you set the same seed value, you’ll get the same sequence of random numbers 
+every time you run your program. To set the seed, 
+
+//use the rand.Seed() function:
+
+In the example below, we’re setting the seed to the current Unix timestamp in nanoseconds. 
+This ensures that the seed value is different every time the program runs.
+
+rand.Seed(time.Now().UnixNano())
