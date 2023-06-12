@@ -54,3 +54,41 @@ func main() {
 	s := strings.Join([]string{"hello", "world"}, ": ")
 	fmt.Println(s)
 }
+
+
+SCOPES
+
+Scope is where a variable can be used.
+
+What’s the difference between a local and global variable?
+
+A variable defined in the function is called a local variable. 
+Their scope is only in the function body, that means they only exist within their function.
+
+A variable defined outside the local scope is called a global variable. 
+Global variables can be used throughout the package or even the external package (after export).
+
+A variable in the function definition is called parameter
+
+
+
+ARRAYS
+
+An array is a set of numbered and length-fixed data item sequences that have the same unique type
+
+This type can be any primitive type such as:
+
+    integer
+    string
+    custom type
+
+The array length must be a constant expression and must be a non-negative integer.
+
+An array in the Go language is a type of value (not a pointer to the first element in C/C++), so it can be created by new():
+
+var arr1 = new([5]int)
+
+The array element can be read (or modified) by an index (position), the index starts from 0, 
+the first element index is 0, the second index is 1, and so on.
+
+fmt.Println(arr1[0]) // output first element
