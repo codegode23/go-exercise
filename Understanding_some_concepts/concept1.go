@@ -1,16 +1,20 @@
-//Create an array with the number 0 to 10
-//Create an array of strings with names
+//The golang example creates a new struct. Then it sets the variables.
 
 package main
 
 import "fmt"
 
+type Person struct {
+	name string
+	job  string
+}
+
 func main() {
-	var a = []int64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
-	var names = []string{"Jasper", "Kojo", "Akabua"}
+	var aperson Person
 
-	b := len(a)
+	aperson.name = "Albert"
+	aperson.job = "Professor"
 
-	fmt.Println(b)
-	fmt.Println(names)
+	fmt.Printf("aperson.name =  %s\n", aperson.name)
+	fmt.Printf("aperson.job  =  %s\n", aperson.job)
 }

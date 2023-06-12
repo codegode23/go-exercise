@@ -92,3 +92,143 @@ The array element can be read (or modified) by an index (position), the index st
 the first element index is 0, the second index is 1, and so on.
 
 fmt.Println(arr1[0]) // output first element
+
+//Create an array with the number 0 to 10
+//Create an array of strings with names
+
+package main
+
+import "fmt"
+
+func main() {
+	var a = []int64{0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10}
+	var names = []string{"Jasper", "Kojo", "Akabua"}
+
+	b := len(a)
+
+	fmt.Println(b)
+	fmt.Println(names)
+}
+
+
+// Looping through an array
+package main
+
+import (
+	"fmt"
+)
+
+func main() {
+	// define array
+	a := []int{1, 2, 3, 4, 5, 6}
+
+	// loop over array
+	for i := 0; i < len(a); i = i + 1 {
+		fmt.Println("character :", a[i])
+	}
+
+	for b := 1; b < 11; b++ {
+		fmt.Println(b)
+	}
+}
+
+
+RANGE
+
+Range iterates over elements. That can be elements of an array, elements of a dictionary or other data structures.
+
+When using range, you can name the current element and current index: for i, num := range nums {.
+
+But you are free to ignore the index: for _, num := range nums {.
+
+
+package main
+
+import "fmt"
+
+func main() {
+	nums := []int{1, 2, 3, 4, 5, 6}
+
+	for _, num := range nums {
+		fmt.Println(num)
+	}
+
+	var a = []int64{1, 2, 3, 4}
+
+	for index, element := range a {
+		fmt.Print(index, ") ", element, "\n")
+	}
+}
+
+
+
+// Make a program that divides x by 2 if it’s greater than 0
+
+package main
+
+import (
+	"bufio"
+	"fmt"
+	"os"
+	"strconv"
+	"strings"
+)
+
+func main() {
+	reader := bufio.NewReader(os.Stdin)
+
+	fmt.Print("Enter a number: ")
+	str1, _ := reader.ReadString('\n')
+
+	str1 = strings.Replace(str1, "\n", "", -1)
+
+	var x int
+
+	// convert string variable to int variable
+	num, e := strconv.Atoi(str1)
+	if e != nil {
+		fmt.Println("conversion error:", str1)
+	}
+
+	if num > 0 {
+		x = num / 2
+	} else {
+		fmt.Println("Number is less than 0")
+	}
+
+	fmt.Println(x)
+}
+
+
+FILES
+
+The following golang code will check if the specified file exists or not.
+
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+
+	if _, err := os.Stat("Questions and Answers.txt"); err == nil {
+		fmt.Printf("File exists\n")
+	} else {
+        
+		fmt.Printf("File does not exist\n")
+	}
+}
+
+
+STRUCT
+
+A struct can bundle attributes together. If you create a struct,
+you can set a couple of variables for that struct. Those variables can be of any datatype.
+
+A key difference from an array is that elements of an array are all of the same datatype.
+That is not the case with a struct.
+
+If you want to combine variables, structs are the way to go. Unlike the concept of object
+oriented programming, they are just data holders.
