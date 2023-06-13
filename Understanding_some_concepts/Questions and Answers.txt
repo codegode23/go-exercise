@@ -407,6 +407,42 @@ func main() {
 }
 
 
+// Make a program that rolls a dice (1 to 6)
+
+package main
+
+import (
+	"fmt"
+	"math/rand"
+	"time"
+)
+
+// func random(min int, max int) int {
+// 	return rand.Intn(max-min) + min
+// }
+
+// func main() {
+
+// 	rand.Seed(time.Now().UnixNano())
+// 	diceRoll := random(1, 6)
+// 	fmt.Printf("Dice roll result: %d\n", diceRoll)
+// }
+
+// Can you generate negative numbers?
+func RandInt(lower, upper int) int {
+	rand.Seed(time.Now().UnixNano())
+	rng := upper - lower
+	return rand.Intn(rng) + lower
+}
+
+func main() {
+	randNeg := RandInt(-2, 10)
+
+	fmt.Println(randNeg)
+}
+
+
+
 POINTERS
 
 A pointer is a variable whose address is the direct memory address of another variable.
@@ -424,3 +460,239 @@ var ipointer *int
 
 /* pointer to a float */
 var fpointer *float32    
+
+// Program to illustrate how memory address works
+
+package main
+import "fmt"
+
+func main() {
+  
+  var num int = 5
+  // prints the value stored in variable
+  fmt.Println("Variable Value:", num)
+
+  // prints the address of the variable
+  fmt.Println("Memory Address:", &num)
+
+}
+
+
+// Program to get the value pointed by a pointer
+
+package main
+
+import "fmt"
+
+func main() {
+
+	var name = "John"
+	var ptr *string
+
+	ptr = &name
+
+	// * to get the value pointed by ptr
+	fmt.Println(*ptr) // John
+
+}
+
+In Go, we can pass pointers as arguments to a function.
+
+// Program to pass pointer as a function argument
+
+package main
+
+import "fmt"
+
+// function definition with a pointer argument
+func update(num *int) {
+
+	// dereference the pointer
+	*num = 30
+
+}
+
+func main() {
+
+	var number = 55
+
+	// function call
+	update(&number)
+
+	fmt.Println("The number is", number)
+
+}
+
+
+Just like regular variables, we can also return pointers from a function.
+
+// Program to return a pointer from a function
+
+package main
+import "fmt"
+ 
+func main() {
+
+  // function call
+  result := display() 
+  fmt.Println("Welcome to", *result)
+
+} 
+
+func display() *string {
+
+  message := "Programiz"
+
+  // returns the address of message
+  return &message
+
+}
+
+package main
+
+import "fmt"
+
+func main() {
+
+	// declare a struct Person
+	type Person struct {
+		name string
+		age  int
+	}
+
+	// instance of the struct Person
+	person1 := Person{"John", 25}
+
+	// create a struct type pointer that
+	// stores the address of person1
+	var ptr *Person
+	ptr = &person1
+
+	// print struct instance
+	fmt.Println(person1)
+
+	// print the struct type pointer
+	fmt.Println(ptr)
+
+}
+
+
+
+
+SLICES
+golang slices are subsets. A slice can be a subset of an array, 
+list or string. You can take multiple slices out of a string, each as a new variable.
+
+A slice is never longer than then the original variable. This makes sense, 
+if you take a slice of a pizza you don’t suddenly have two pizzas. In programming it’s similar.
+
+
+// Program that loops over a slice using for loop
+
+package main
+
+import "fmt"
+
+func main() {
+	numbers := []int{2, 4, 6, 8, 10}
+
+	// for loop that iterates through the slice
+	for i := 0; i < len(numbers); i++ {
+		fmt.Println(numbers[i])
+	}
+
+}
+
+
+
+METHODS
+
+golang methods are reusable code blocks. By calling a golang method, 
+all of the code in the method will be executed.
+
+Methods should start with a lowercase character and
+only contain alphabetic characters. 
+A method can take one or more parameters which can be used in the code block.
+
+// Create a method that sums two numbers
+package main
+
+import "fmt"
+
+func main() {
+	var a float64 = 3
+	var b float64 = 9
+	var ret = multiply(a, b)
+	fmt.Printf("Value is : %.2f \n", ret)
+
+	var sums = sumTwoNums(a, b)
+
+	fmt.Println(sums)
+
+}
+
+func multiply(num1, num2 float64) float64 {
+	var result float64
+	result = num1 * num2
+	return result
+}
+
+func sumTwoNums(num1, num2 float64) float64 {
+	sum := num1 + num2
+	return sum
+}
+
+
+DEFER
+
+Defer is a special statement in Go. The defer statement schedules a
+function to be called after the current function has completed.
+
+Go will run all statements in the function,
+then do the function call specified by defer after.
+
+The normal execution in a Go function is top to bottom, 
+if you had the function below, it would first call who() (top) and then hello (bottom).
+
+
+func main() {
+    who()
+    hello()
+}
+
+If you add the defer statement, it will remember to call it after the function is finished.
+
+
+func main() {
+    defer who()
+    hello()
+}
+
+It will first call hello() and then who().
+
+Practical example
+
+If you want to create and write a file, the steps would normally be:
+
+    create file
+    write file
+    close file
+
+With the defer statement you could write:
+
+    create file
+    (defer) close file after function completes
+    write file
+
+package main
+
+import (
+	"fmt"
+	"os"
+)
+
+func main() {
+	f, _ := os.Create("hello.txt")
+	defer f.Close()
+	fmt.Fprintln(f, "hello world")
+}
