@@ -696,3 +696,58 @@ func main() {
 	defer f.Close()
 	fmt.Fprintln(f, "hello world")
 }
+
+
+VARIADIC FUNCTION
+
+package main
+
+import "fmt"
+
+func sum(numbers ...int) {
+    total := 0
+    for _, num := range numbers {
+        total += num
+    }
+    fmt.Println(total)
+}
+
+func main() {
+    sum(2,3,4)
+}
+
+
+GOROUTINE
+
+A goroutine is a function that can run concurrently. You can see it as a lightweight thread. 
+The idea stems from concurrency: working on more than one task simultaniously.
+
+To invoke a Go routine, write go before the function call.
+
+package main
+
+import "fmt"
+
+func f(msg string) {
+	fmt.Println(msg)
+}
+
+func main() {
+	go f("go routine")
+	f("function")
+	fmt.Scanln()
+}
+
+
+CHANNELS
+
+Channels are a way for goroutines to communicate with eachother.
+A channel type is defined with the keyword chan.
+
+Because goroutines run concurrently, they can’t simply pass data
+from one goroutine to another. Channels are needed.
+
+How do channels work?
+
+If you type c <- "message", “message” gets send to the channel.
+Then msg := <- c means receive the message and store it in variable msg.
