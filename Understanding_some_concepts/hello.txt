@@ -1,1 +1,5 @@
-hello world
+What Is an API?
+
+An Application Programming Interface (API) defines the allowed interactions between
+two pieces of software, just like a User Interface defines the ways
+in which a user can interact with a program.
