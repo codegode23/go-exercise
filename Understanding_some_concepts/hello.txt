@@ -3,3 +3,112 @@ What Is an API?
 An Application Programming Interface (API) defines the allowed interactions between
 two pieces of software, just like a User Interface defines the ways
 in which a user can interact with a program.
+
+Goroutines again
+
+A goroutine is a function that runs concurrently with certain other goroutines;
+it is a lightweight thread. Using the channel operator, we can transport values
+through channels. As a result, a channel provides a way for the goroutine to 
+communicate with one another without using locks. The channel is bidirectional, 
+meaning that data can be sent and received through the same channel.
+
+Reference: https://www.scaler.com/topics/golang/goroutines/
+
+package main
+
+import (
+    "fmt"
+)
+
+func hell() {                    //creating a goroutine
+    fmt.Println("Hello world!!")
+}
+
+func main() {
+    go hell()                   //calling a goroutine
+    time.Sleep(1 * time.Second)    //making the main goroutine sleep for 1 second
+    fmt.Println("Welcome user!! You are currently in the main function.")
+}
+
+Result: Hello, world!!
+        Welcome, user!! You are currently in the main function.
+
+In the above code, we used the method time.sleep(1 * time.Second)
+to make the main goroutine sleep for a second so that the goroutine
+hell() gets some time to execute.
+
+Result without the time.sleep method: Welcome, user!! You are currently in the main function.
+
+
+Starting Multiple Goroutines
+
+Let us consider an example in which we start two goroutines.
+
+package main
+
+import (
+	"fmt"
+	"time"
+)
+
+func number() {                    //creating a goroutine
+	for i := 1; i <= 5; i++ {
+		time.Sleep(400 * time.Millisecond)    //making the goroutine sleep for 400 milliseconds
+		fmt.Printf("%d ", i)
+	}
+}
+
+func alphabet() {                  //creating a goroutine
+	for i := 'a'; i <= 'g'; i++ {
+		time.Sleep(500 * time.Millisecond)    //making the goroutine sleep for 500 milliseconds
+		fmt.Printf("%c ", i)
+	}
+}
+
+func main() {
+	go number()            //calling a goroutine
+	go alphabet()          //calling a goroutine
+	time.Sleep(9000 * time.Millisecond)        //making the main goroutine sleep for 9000 milliseconds
+	fmt.Println("\nProgram terminated!!")
+}
+
+Output:
+
+1 a 2 b 3 4 c 5 d e f g 
+Program terminated!!
+
+Both the goroutines number and alphabet run concurrently. The goroutine number initially sleeps for 400 milliseconds
+and then executes the number 1 then sleeps again and executes number 2 and so on. Similarly, the goroutine alphabet
+sleeps initially for 500 milliseconds and executes a then sleeps again then executes b, and so on. The main goroutine
+executes both the goroutines number and alphabet and sleeps for 9000 milliseconds and then it terminates.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Reference: https://www.scaler.com/topics/golang/goroutines/
