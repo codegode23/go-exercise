@@ -83,32 +83,49 @@ sleeps initially for 500 milliseconds and executes a then sleeps again then exec
 executes both the goroutines number and alphabet and sleeps for 9000 milliseconds and then it terminates.
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 Reference: https://www.scaler.com/topics/golang/goroutines/
+
+
+
+Channels
+
+In the Golang, a channel acts as a medium through which goroutine communicates
+with each other with a lock-free mode of communication. It is a technique in golang
+that allows one goroutine to exchange data or to communicate with another goroutine
+and hence it is known as a channel.
+
+package main
+import "fmt"
+
+// Prints a greeting message using values received in
+// the channel
+func greet(c chan string) {
+
+	name := <- c	// receiving value from channel
+	fmt.Println("Hello", name)
+}
+
+func main() {
+
+	// Making a channel of value type string
+	c := make(chan string)
+
+	// Starting a concurrent goroutine
+	go greet(c)
+
+	// Sending values to the channel c
+	c <- "World"
+
+	// Closing channel
+	close(c)
+}
+
+Result: Hello World
+
+The first step is to make a channel with a type string and function start with greet as a goroutine.
+// Making a channel of value type string
+	c := make(chan string)
+
+The greet function is blocked when <- c is encountered and it waits to receive a value.
+
+The main function of the goroutine is to send value to the channel that the greet function prints when received

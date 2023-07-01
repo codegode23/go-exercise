@@ -48,37 +48,35 @@
 
 // func main() {
 
-// 	//Calling goroutine
-// 	go goroutine1("It is a goroutine!!")
-// 	time.Sleep(1 * time.Second)
-// 	//Calling normal function
-// 	goroutine1("It is a function.")
-// }
-
+//		//Calling goroutine
+//		go goroutine1("It is a goroutine!!")
+//		time.Sleep(1 * time.Second)
+//		//Calling normal function
+//		goroutine1("It is a function.")
+//	}
 package main
 
-import (
-	"fmt"
-	"time"
-)
+import "fmt"
 
-func number() { //creating a goroutine
-	for i := 1; i <= 5; i++ {
-		time.Sleep(400 * time.Millisecond) //making the goroutine sleep for 400 milliseconds
-		fmt.Printf("%d ", i)
-	}
-}
+// Prints a greeting message using values received in
+// the channel
+func greet(c chan string) {
 
-func alphabet() { //creating a goroutine
-	for i := 'a'; i <= 'g'; i++ {
-		time.Sleep(500 * time.Millisecond) //making the goroutine sleep for 500 milliseconds
-		fmt.Printf("%c ", i)
-	}
+	name := <-c // receiving value from channel
+	fmt.Println("Hello", name)
 }
 
 func main() {
-	go number()                         //calling a goroutine
-	go alphabet()                       //calling a goroutine
-	time.Sleep(9000 * time.Millisecond) //making the main goroutine sleep for 9000 milliseconds
-	fmt.Println("\nProgram terminated!!")
+
+	// Making a channel of value type string
+	c := make(chan string)
+
+	// Starting a concurrent goroutine
+	go greet(c)
+
+	// Sending values to the channel c
+	c <- "World"
+
+	// Closing channel
+	close(c)
 }
