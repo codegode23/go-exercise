@@ -129,3 +129,19 @@ The first step is to make a channel with a type string and function start with g
 The greet function is blocked when <- c is encountered and it waits to receive a value.
 
 The main function of the goroutine is to send value to the channel that the greet function prints when received
+
+
+
+TYPES OF CHANNELS
+
+There are two types of channels available in golang according to the behavior of data exchange:
+
+Unbuffered channel- it is used for performing synchronous communication
+between a buffered channel as well as goroutines.
+
+Buffered channel- it is used for performing asynchronous communication.
+Here is a code block that creates buffered and unbuffered channels:
+
+Unbuffered := make(chan int) // Unbuffered channel of integer type
+
+buffered := make(chan int, 10)	// Buffered channel of integer type
