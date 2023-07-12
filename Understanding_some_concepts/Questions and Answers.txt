@@ -741,7 +741,7 @@ func main() {
 
 CHANNELS
 
-Channels are a way for goroutines to communicate with eachother.
+Channels are a way for goroutines to communicate with each other.
 A channel type is defined with the keyword chan.
 
 Because goroutines run concurrently, they can’t simply pass data
