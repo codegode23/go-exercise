@@ -10,6 +10,7 @@ func doSomething(ctx context.Context) {
 }
 
 func main() {
-	ctx := context.TODO()
+	//ctx := context.TODO()
+	ctx := context.Background()
 	doSomething(ctx)
 }
